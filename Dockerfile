@@ -71,6 +71,7 @@ run     cd /var/lib/graphite/webapp/graphite && python manage.py syncdb --noinpu
 
 # Configure InfluxDB
 ADD influxdb/config.toml /config/config.toml 
+ADD influxdb/run.sh /usr/local/bin/run_influxdb
 
 # Configure Grafana
 add     ./grafana/config.js /src/grafana/config.js
