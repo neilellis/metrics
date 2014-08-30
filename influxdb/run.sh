@@ -41,7 +41,7 @@ fi
 
 if [ -n "${PRE_CREATE_DB}" ]; then
     echo "=> About to create the following database: ${PRE_CREATE_DB}"
-    if [ -f "/data/.pre_db_created" ]; then
+    if [ -f "/var/easydeploy/share/.pre_db_created" ]; then
         echo "=> Database had been created before, skipping ..."
     else
         echo "=> Starting InfluxDB ..."
@@ -66,7 +66,7 @@ if [ -n "${PRE_CREATE_DB}" ]; then
         done
         echo ""
 
-        touch "/data/.pre_db_created"
+        touch "/var/easydeploy/share/.pre_db_created"
         fg
         exit 0
     fi
