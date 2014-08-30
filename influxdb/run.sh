@@ -1,7 +1,7 @@
 #!/bin/bash
 
 set -m
-CONFIG_FILE="/config/config.toml"
+CONFIG_FILE="/etc/influxdb/config.toml"
 #CONFIG_FILE="test"
 
 if [ -n "${FORCE_HOSTNAME}" ]; then
