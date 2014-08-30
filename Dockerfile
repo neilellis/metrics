@@ -35,7 +35,15 @@ run     mkdir /src/grafana && cd /src/grafana &&\
         wget http://grafanarel.s3.amazonaws.com/grafana-1.6.1.tar.gz &&\
         tar xzvf grafana-1.6.1.tar.gz --strip-components=1 && rm grafana-1.6.1.tar.gz
 
+# Install InfluxDB
+RUN apt-get update && \
+  DEBIAN_FRONTEND=noninteractive apt-get install -yq --no-install-recommends curl ca-certificates && \
+  curl -s -o /tmp/influxdb_latest_amd64.deb https://s3.amazonaws.com/influxdb/influxdb_latest_amd64.deb && \
+  dpkg -i /tmp/influxdb_latest_amd64.deb && \
+  rm /tmp/influxdb_latest_amd64.deb && \
+  rm -rf /var/lib/apt/lists/*
 
+ 
 # ----------------- #
 #   Configuration   #
 # ----------------- #
@@ -61,6 +69,9 @@ run     chmod 0775 /var/lib/graphite/storage /var/lib/graphite/storage/whisper
 run     chmod 0664 /var/lib/graphite/storage/graphite.db
 run     cd /var/lib/graphite/webapp/graphite && python manage.py syncdb --noinput
 
+# Configure InfluxDB
+ADD config.toml /config/config.toml 
+
 # Configure Grafana
 add     ./grafana/config.js /src/grafana/config.js
 #add     ./grafana/scripted.json /src/grafana/app/dashboards/default.json
@@ -83,6 +94,15 @@ expose  8125/udp
 
 # StatsD Management port
 expose  8126
+
+# InfluxDB Admin server
+EXPOSE 8083
+
+# InfluxDB HTTP API
+EXPOSE 8086
+
+# InfluxDB HTTPS API
+EXPOSE 8084
 
 
 
