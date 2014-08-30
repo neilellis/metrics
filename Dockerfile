@@ -70,7 +70,7 @@ run     chmod 0664 /var/lib/graphite/storage/graphite.db
 run     cd /var/lib/graphite/webapp/graphite && python manage.py syncdb --noinput
 
 # Configure InfluxDB
-ADD config.toml /config/config.toml 
+ADD influxdb/config.toml /config/config.toml 
 
 # Configure Grafana
 add     ./grafana/config.js /src/grafana/config.js
