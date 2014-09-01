@@ -14,7 +14,7 @@ run     add-apt-repository -y ppa:chris-lea/node.js
 run     apt-get -y update
 run     apt-get -y install  python-django-tagging python-simplejson python-memcache python-ldap python-cairo  \
                             python-pysqlite2 python-support python-pip gunicorn supervisor nginx-light nodejs \
-                            git wget curl openjdk-7-jre build-essential python-dev
+                            git wget curl openjdk-7-jre build-essential python-dev libpq-dev nodejs npm 
 
 # Install Elasticsearch
 run     cd ~ && wget https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.1.1.deb
@@ -43,7 +43,15 @@ RUN apt-get update && \
   rm /tmp/influxdb_latest_amd64.deb && \
   rm -rf /var/lib/apt/lists/*
 
- 
+# Install cabot
+RUN git clone https://github.com/shoonoise/cabot.git /cabot
+RUN pip install -r /cabot/requirements.txt
+RUN npm install --no-color -g coffee-script less@1.3 --registry http://registry.npmjs.org/
+
+# Install dependencies
+RUN pip install -r /cabot/requirements.txt
+RUN npm install --no-color -g coffee-script less@1.3 --registry http://registry.npmjs.org/
+
 # ----------------- #
 #   Configuration   #
 # ----------------- #
@@ -82,6 +90,9 @@ add     ./grafana/config.js /src/grafana/config.js
 add     ./nginx/nginx.conf /etc/nginx/nginx.conf
 add     ./supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
+#Configure Cabot
+ADD /cabot/fixture.json /cabot/
+ADD /cabot/run.sh /cabot/
 
 
 # ---------------- #
