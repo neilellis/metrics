@@ -102,6 +102,9 @@ ADD /cabot/run.sh /cabot/
 # Grafana
 expose  80
 
+# Cabot
+expose 8888
+
 # StatsD UDP port
 expose  8125/udp
 
