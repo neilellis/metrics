@@ -14,7 +14,7 @@ run     add-apt-repository -y ppa:chris-lea/node.js
 run     apt-get -y update
 run     apt-get -y install  python-django-tagging python-simplejson python-memcache python-ldap python-cairo  \
                             python-pysqlite2 python-support python-pip gunicorn supervisor nginx-light nodejs \
-                            git wget curl openjdk-7-jre build-essential python-dev libpq-dev nodejs npm 
+                            git wget curl openjdk-7-jre build-essential python-dev libpq-dev nodejs 
 
 # Install Elasticsearch
 run     cd ~ && wget https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.1.1.deb
