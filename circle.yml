@@ -40,10 +40,10 @@ deployment:
     production:
         branch: master
         commands:
-            - "~/snapito-build-tools/bin/easydeploy.sh master metrics update no '' 'html'" :
+            - "~/snapito-build-tools/bin/easydeploy.sh master metrics update no no 'html'" :
                 timeout: 600
     development:
         branch: development
         commands:
-            - ~/snapito-build-tools/bin/easydeploy.sh ${CIRCLE_BRANCH} metrics rebuild-app no '' 'html' :
+            - ~/snapito-build-tools/bin/easydeploy.sh ${CIRCLE_BRANCH} metrics rebuild-app no no 'html' :
                 timeout: 600
