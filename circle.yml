@@ -40,7 +40,7 @@ deployment:
     production:
         branch: master
         commands:
-            - "~/snapito-build-tools/bin/easydeploy.sh master metrics update no no 'html'" :
+            - "~/snapito-build-tools/bin/easydeploy.sh master metrics image no no 'html'" :
                 timeout: 600
     development:
         branch: development
