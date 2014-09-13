@@ -44,13 +44,10 @@ RUN apt-get update && \
   rm -rf /var/lib/apt/lists/*
 
 # Install cabot
-RUN git clone https://github.com/shoonoise/cabot.git /cabot
-RUN pip install -r /cabot/requirements.txt
-RUN npm install --no-color -g coffee-script less@1.3 --registry http://registry.npmjs.org/
+#RUN git clone https://github.com/shoonoise/cabot.git /cabot
+#RUN pip install -r /cabot/requirements.txt
+#RUN npm install --no-color -g coffee-script less@1.3 --registry http://registry.npmjs.org/
 
-# Install dependencies
-RUN pip install -r /cabot/requirements.txt
-RUN npm install --no-color -g coffee-script less@1.3 --registry http://registry.npmjs.org/
 
 # ----------------- #
 #   Configuration   #
