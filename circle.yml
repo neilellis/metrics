@@ -2,7 +2,7 @@ machine:
   ruby:
     version: rbx-2.2.6
   services:
-#    - docker
+    - docker
 
 
 dependencies:
