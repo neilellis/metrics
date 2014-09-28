@@ -5,4 +5,3 @@ export EASYDEPLOY_EXTERNALPORTS="8125"
 export EASYDEPLOY_PROCESS_NUMBER=1
 export EASYDEPLOY_STATE="stateful"
 export EASYDEPLOY_SERVICE_CHECK_INTERVAL=60s
-export DOCKER_IMAGE="cazcade/docker-grafana-graphite"

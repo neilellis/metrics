@@ -1,4 +1,5 @@
 export COMPONENT=metrics
+export DOCKER_IMAGE="cazcade/docker-grafana-graphite"
 
 #Common
 export DO_BASE_IMAGE_NAME=template-nyc2-prod-snapito-base
